@@ -7,12 +7,12 @@
 
 
 ### Before Executing The Script
-1. You will need to create `secrets.py` in the main project directory.  In the `secrets.py` file, you will need to declare the file path to your music directory in Ubuntu.
+- You will need to create `secrets.py` in the main project directory.  In the `secrets.py` file, you will need to declare the file path to your music directory in Ubuntu.
 ```
 home_folder = {{MUSIC_DIRECTORY}}
 ```
 
-2. Copies of your playlists should be placed in the `Playlists` folder.
+-Copies of your playlists should be placed in the `Playlists` folder.
 
 #### Executing The Script
 While in the project folder, execute the following command:
