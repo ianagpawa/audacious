@@ -12,7 +12,7 @@
 home_folder = {{MUSIC_DIRECTORY}}
 ```
 
--Copies of your playlists should be placed in the `Playlists` folder.
+- Copies of your playlists should be placed in the `Playlists` folder.
 
 #### Executing The Script
 While in the project folder, execute the following command:
