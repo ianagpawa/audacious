@@ -1,35 +1,42 @@
 import os
+import subprocess
 
-cur_path = os.getcwd()
-playlists_path = cur_path + "/Playlists"
+from secrets import home_folder
 
+origin = os.getcwd()
+playlists_path = origin + "/Playlists"
 playlist_names = os.listdir(playlists_path)
 
-os.chdir(playlists_path)
 
-#
-# f = open('80s.m3u', 'r')
-#
-# arr = f.readlines()
-#
-# print arr
-#
-# f.close()
+subprocess.call("mkdir " + "linuxPlaylists", shell=True)
+destination_folder = origin + "/linuxPlaylists"
+os.chdir(playlists_path)
 
 def replaceFileName(file_name):
     slashes = file_name.replace("\\", "/")
-    replaced = slashes.replace("D:", "/media/onyx/Daedra")
+    replaced = slashes.replace("D:", home_folder)
     return replaced
 
-def getArrayOfFileNames(filename):
-    playlist = open(filename, 'r')
+
+def convertPlaylist(filename, destination_folder):
+    playlist = open(filename, 'r+')
     arr = playlist.readlines()
+    newArr = []
     for file_name in arr:
         replacement = replaceFileName(file_name)
-        print replacement
+        newArr.append(replacement)
     playlist.close()
+    newPlaylist = open(destination_folder + "/" + filename, 'w+')
+    newPlaylist.writelines(newArr)
+    newPlaylist.close()
 
-getArrayOfFileNames(playlist_names[0])
+def convertAll():
+    for playlist in playlist_names:
+        convertPlaylist(playlist, destination_folder)
+    print "Everything Completed!"
 
+#getArrayOfFileNames('80s.m3u', destination_folder)
 
-os.chdir(cur_path)
+convertAll()
+
+os.chdir(origin)
