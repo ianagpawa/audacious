@@ -52,7 +52,7 @@ def convertAll():
             source = home_folder + "/" + playlist
             dest_cp = destination_copy + "/" + playlist
             shutil.copy2(source, dest_cp)
-            print "%s has been copied to Playlists directory" % playlist
+            print "%s has been copied to Playlists directory\n" % playlist
 
     print "All playlilsts have been converted!"
     os.chdir(origin)
