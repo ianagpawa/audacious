@@ -15,12 +15,12 @@ def convertPlaylist(filename, destination_folder):
     playlist = open(filename, 'r+')
     arr = playlist.readlines()
     newArr = []
-    for file_name in arr:
-        replacement = replaceFileName(file_name)
-        newArr.append(replacement)
-    playlist.close()
     newPlaylist = open(destination_folder + "/" + filename, 'w+')
-    newPlaylist.writelines(newArr)
+    # newPlaylist = open(destination_folder, 'w+')
+    for song_path in arr:
+        replacement = replaceFileName(song_path)
+        newPlaylist.writelines(replacement)
+    playlist.close()
     newPlaylist.close()
 
 def get_m3u(filename):
@@ -38,18 +38,19 @@ def convertAll():
         subprocess.call("mkdir " + "Playlists", shell=True)
 
     destination_folder = origin + "/linuxPlaylists"
-
     destination_copy = origin + "/Playlists"
 
-    os.chdir(home_folder)
-    playlist_names = os.listdir(home_folder)
+
+    playlist_folder = home_folder + '/Music/MusicBee/Playlists'
+    os.chdir(playlist_folder)
+    playlist_names = os.listdir(playlist_folder)
 
     for playlist in playlist_names:
         if get_m3u(playlist):
             convertPlaylist(playlist, destination_folder)
             print "%s has been converted" % playlist
 
-            source = home_folder + "/" + playlist
+            source = playlist_folder + "/" + playlist
             dest_cp = destination_copy + "/" + playlist
             shutil.copy2(source, dest_cp)
             print "%s has been copied to Playlists directory\n" % playlist
@@ -57,5 +58,9 @@ def convertAll():
     print "All playlilsts have been converted!"
     os.chdir(origin)
 
-
 convertAll()
+
+# test_playlist = "Playlists/80s.m3u"
+# destination_test = '80s.m3u'
+#
+# convertPlaylist(test_playlist, destination_test)
