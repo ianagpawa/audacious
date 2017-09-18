@@ -7,12 +7,13 @@
 
 
 ### Before Executing The Script
-- You will need to create `secrets.py` in the main project directory.  In the `secrets.py` file, you will need to declare the file path to your music directory in Ubuntu.
+- You will need to create `secrets.py` in the main project directory.  In the `secrets.py` file, you will need to declare the file path to your Windows music directory from your Ubuntu directory.
 ```
 home_folder = {{MUSIC_DIRECTORY}}
 ```
 
-- Copies of your playlists should be placed in the `Playlists` folder.
+Copies of the playlists will be copied/updated during the process and placed in the `Playlists` folder.
+
 
 #### Executing The Script
 While in the project folder, execute the following command:
@@ -28,6 +29,7 @@ Within the project folder, you will find the following files:
 ```
 audacious/
     ├── Playlists/
+    ├── .gitignore
     ├── convert.py
     └── README.md
 ```
