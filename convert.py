@@ -1,5 +1,6 @@
 import os
 import subprocess
+import shutil
 
 from secrets import home_folder
 
@@ -33,7 +34,12 @@ def convertAll():
     if not os.path.isdir("linuxPlaylists"):
         subprocess.call("mkdir " + "linuxPlaylists", shell=True)
 
+    if not os.path.isdir("Playlists"):
+        subprocess.call("mkdir " + "Playlists", shell=True)
+
     destination_folder = origin + "/linuxPlaylists"
+
+    destination_copy = origin + "/Playlists"
 
     os.chdir(home_folder)
     playlist_names = os.listdir(home_folder)
@@ -41,8 +47,14 @@ def convertAll():
     for playlist in playlist_names:
         if get_m3u(playlist):
             convertPlaylist(playlist, destination_folder)
+            print "%s has been converted" % playlist
 
-    print "Everything Completed!"
+            source = home_folder + "/" + playlist
+            dest_cp = destination_copy + "/" + playlist
+            shutil.copy2(source, dest_cp)
+            print "%s has been copied to Playlists directory" % playlist
+
+    print "All playlilsts have been converted!"
     os.chdir(origin)
 
 

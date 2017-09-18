@@ -12,7 +12,7 @@
 home_folder = {{MUSIC_DIRECTORY}}
 ```
 
-Copies of the playlists will be copied/updated during the process and placed in the `Playlists` folder.
+Copies of the playlists will be copied/updated during the process and placed in the `Playlists` folder.  This is for archiving purposes.
 
 
 #### Executing The Script
