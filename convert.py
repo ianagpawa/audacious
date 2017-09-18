@@ -38,12 +38,16 @@ def get_m3u(filename):
 
 def convertAll():
     origin = os.getcwd()
+    if not os.path.isdir("linuxPlaylists"):
+        subprocess.call("mkdir " + "linuxPlaylists", shell=True)
+        print 'no'
+    
 
-    playlists_path = home_folder + "Music/MusicBee/Playlists"
-    playlist_names = os.listdir(playlists_path)
+    playlist_names = os.listdir(home_folder)
 
     for playlist in playlist_names:
-        print (playlist, get_m3u(playlist))
+        pass
+
     #
     # subprocess.call("mkdir " + "linuxPlaylists", shell=True)
     # destination_folder = origin + "/linuxPlaylists"
