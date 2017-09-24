@@ -42,7 +42,9 @@ def convertAll():
 
 
     playlist_folder = home_folder + '/Music/MusicBee/Playlists'
+
     os.chdir(playlist_folder)
+
     playlist_names = os.listdir(playlist_folder)
 
     for playlist in playlist_names:
